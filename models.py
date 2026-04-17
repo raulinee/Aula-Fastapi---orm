@@ -19,18 +19,18 @@ class Curso(Base):
     alunos = relationship("aluno", back_populates="curso")
 
 
-    # Tabela aluno
-    class Aluno(Base):
-        __tablename__ = "alunos"
+# Tabela aluno
+class Aluno(Base):
+    __tablename__ = "alunos"
 
-        id = Column(Integer, primary_key =True, autoincrement=True)
-        nome = Column(String (100), nullable=False)
-        email = Column(String(100), unique=True)
-        idade = Column(String)
+    id = Column(Integer, primary_key =True, autoincrement=True)
+    nome = Column(String (100), nullable=False)
+    email = Column(String(100), unique=True)
+    idade = Column(String)
 
-        curso_id = Column(Integer, ForeignKey("cursos.id"))
+    curso_id = Column(Integer, ForeignKey("cursos.id"))
 
-        curso = relationship("Curso", back_populates="alunos")
+    curso = relationship("Curso", back_populates="alunos")
 
 
 engine = create_engine("sqlite:///escola.db")
